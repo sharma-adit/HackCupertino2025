@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Future: Sustainability Solutions</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-green: #2c8d3a;
+            --light-green: #7ed386;
+            --dark-green: #1b5e20;
+            --accent-yellow: #ffd54f;
+            --accent-blue: #4fc3f7;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            padding: 8px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.6rem;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-yellow);
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(44, 141, 58, 0.9) 0%, rgba(27, 94, 32, 0.9) 100%);
+            color: var(--text-light);
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-custom {
+            background-color: var(--accent-yellow);
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background-color: #ffca28;
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-yellow);
+            border-radius: 2px;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .section-light {
+            background-color: #ffffff;
+            color: var(--text-dark);
+        }
+
+        .section-dark {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+        }
+
+        /* Cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 320px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .solution-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--dark-green);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            width: 200px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-yellow);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .social-icons {
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-yellow);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-yellow);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            z-index: 99;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: #ffca28;
+            transform: translateY(-3px);
+        }
+
+        /* Canvas for Three.js */
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-icon {
+            width: 100px;
+            height: 100px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section h2 {
+                font-size: 2.4rem;
+            }
+
+            .section {
+                padding: 80px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .card-container {
+                gap: 20px;
+            }
+
+            .solution-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .stat-item {
+                width: 170px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .btn-custom {
+                padding: 10px 25px;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .section p {
+                font-size: 1.1rem;
+            }
+
+            .card-container {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Loading Animation -->
+<div class="loader">
+    <div class="loader-icon"></div>
+</div>
+
+<!-- Three.js Canvas -->
+<canvas id="background-canvas"></canvas>
+
+<!-- Scroll to Top Button -->
+<div class="scroll-top">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Eco<span>Future</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#definition">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#solutions">Solutions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Creating a Sustainable Future</h1>
+        <p>
+            Unsustainability today happens when people use too many natural resources without thinking about the future. For example, cutting down too many trees, wasting water, and using gas and oil too much are bad for the planet. Factories and cars make the air dirty, and garbage like plastic pollutes the oceans and hurts animals. Farmers sometimes use the land too much, which can make it hard to grow food later. If we keep doing this, there won’t be enough clean water, air, or food for everyone in the future. It’s important to take care of the Earth by saving resources, reducing waste, and using clean energy like wind or solar power.
+        </p>
+        <a href="#definition" class="btn btn-custom">Learn More</a>
+    </div>
+</section>
+
+<!-- Definition Section -->
+<section id="definition" class="section section-light">
+    <h2>What is Sustainability?</h2>
+    <p>
+        Sustainability is the practice of meeting our current needs without compromising the ability of future generations to meet theirs.
+        It involves using resources wisely, avoiding overconsumption, and ensuring a balance between environmental, social, and economic needs.
+        While renewable resources are vital for sustainability, their mere availability does not guarantee it. Overuse of even renewable resources,
+        such as food, can lead to unsustainability. It's essential to consume thoughtfully and with care.
+    </p>
+    <div class="mt-4">
+        <a href="#solutions" class="btn btn-custom">Explore Solutions</a>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section id="solutions" class="section section-dark">
+    <h2>Sustainable Solutions</h2>
+    <p>
+        We offer innovative approaches to address environmental challenges and promote sustainable living. Explore our key focus areas below.
+    </p>
+
+    <div class="card-container">
+        <!-- Food Card -->
+        <div class="solution-card">
+            <div class="card-image">
+                <img src="https://extension.harvard.edu/wp-content/uploads/sites/8/2020/10/sustainabile-food.jpg" alt="Sustainable Food">
+            </div>
+            <div class="card-content">
+                <h3>Sustainable Food</h3>
+                <p>
+                    Our food systems can support both people and planet through organic farming, reducing waste, and supporting local agriculture.
+                </p>
+                <a href="#" class="read-more">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Water Card -->
+        <div class="solution-card">
+            <div class="card-image">
+                <img src="https://static.vecteezy.com/system/resources/previews/050/509/941/non_2x/green-leaf-splashing-into-clear-water-photo.jpg" alt="Clean Water">
+            </div>
+            <div class="card-content">
+                <h3>Water Conservation</h3>
+                <p>
+                    Preserving our water resources through efficient management, pollution prevention, and innovative purification techniques.
+                </p>
+                <a href="#" class="read-more">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Energy Card -->
+        <div class="solution-card">
+            <div class="card-image">
+                <img src="https://media.istockphoto.com/id/1337173750/photo/solar-and-wind-power.jpg?s=612x612&w=0&k=20&c=krNUQVFMq4DDPDvhKhW4SwL06NlmZ7dcHWWGDsxZzKI=" alt="Renewable Energy">
+            </div>
+            <div class="card-content">
+                <h3>Renewable Energy</h3>
+                <p>
+                    Clean energy solutions like solar and wind power help reduce emissions and create a more sustainable energy future.
+                </p>
+                <a href="#" class="read-more">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <h2>
+        Together we can save the future.
+    </h2>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#definition">About</a>
+            <a href="#solutions">Solutions</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Three.js for Fancy Background Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- GSAP for advanced animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+    // Page loading animation
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.querySelector('.loader').classList.add('fade-out');
+        }, 500);
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Scroll to top button
+    window.addEventListener('scroll', function() {
+        const scrollTop = document.querySelector('.scroll-top');
+        if (window.scrollY > 300) {
+            scrollTop.classList.add('active');
+        } else {
+            scrollTop.classList.remove('active');
+        }
+    });
+
+    document.querySelector('.scroll-top').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Counters animation for stats
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200; // Lower number = faster animation
+
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-value'));
+            const count = 0;
+            const increment = target / speed;
+
+            function updateCount() {
+                const value = Math.ceil(parseInt(counter.textContent) + increment);
+                if (value < target) {
+                    counter.textContent = value;
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+
+            updateCount();
+        });
+    }
+
+    // Three.js Fancy Background Animation
+    const setupThreeJS = () => {
+        const canvas = document.getElementById('background-canvas');
+        const renderer = new THREE.WebGLRenderer({
+            canvas,
+            alpha: true,
+            antialias: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 30;
+
+        // Create particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1500;
+
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            positions[i] = (Math.random() - 0.5) * 100;
+            colors[i] = Math.random() * 0.5 + 0.5; // Brighter colors
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.2,
+            sizeAttenuation: true,
+            transparent: true,
+            opacity: 0.8,
+            vertexColors: true
+        });
+
+        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particles);
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+
+            particles.rotation.x += 0.0003;
+            particles.rotation.y += 0.0005;
+
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    };
+
+    // GSAP Animations
+    const setupGSAPAnimations = () => {
+        // Register ScrollTrigger with GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero section animation
+        gsap.from('.hero-content', {
+            opacity: 0,
+            y: 50,
+            duration: 1.5,
+            ease: 'power3.out'
+        });
+
+        // Definition section animations
+        gsap.from('#definition h2', {
+            scrollTrigger: {
+                trigger: '#definition',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
+        });
+
+        gsap.from('#definition p', {
+            scrollTrigger: {
+                trigger: '#definition p',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            stagger: 0.3
+        });
+
+        // Solutions section animations
+        gsap.from('#solutions h2', {
+            scrollTrigger: {
+                trigger: '#solutions',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
+        });
+
+        gsap.from('.solution-card', {
+            scrollTrigger: {
+                trigger: '.card-container',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2
+        });
+
+        // Stats section animations
+        gsap.from('#stats h2', {
+            scrollTrigger: {
+                trigger: '#stats',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
+        });
+
+        gsap.from('.stat-item', {
+            scrollTrigger: {
+                trigger: '.stats-container',
+                start: 'top 80%',
+                onEnter: animateCounters
+            },
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            stagger: 0.2
+        });
+    };
+
+    // Initialize all animations and effects
+    document.addEventListener('DOMContentLoaded', function() {
+        setupThreeJS();
+        setupGSAPAnimations();
+    });
+</script>
+</body>
+</html>
